@@ -1,6 +1,7 @@
-package main
+package dsmr
 
 import (
+	"github.com/marcelblijleven/dsmrreporter"
 	"github.com/stretchr/testify/assert"
 	"github.com/tarm/serial"
 	"testing"
@@ -55,7 +56,7 @@ func TestGetP1Config(t *testing.T) {
 	// No device provided
 	_, err := getP1Config("", "", "")
 	assert.Error(t, err)
-	assert.ErrorIs(t, ErrNoDeviceProvided, err)
+	assert.ErrorIs(t, main.ErrNoDeviceProvided, err)
 
 	// Invalid baud provided
 	_, err = getP1Config("/dev/ttyUSB0", "baud?", "")
