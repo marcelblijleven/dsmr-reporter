@@ -2,7 +2,6 @@ package dsmr_test
 
 import (
 	"errors"
-	dsmrreporter "github.com/marcelblijleven/dsmrreporter"
 	"github.com/marcelblijleven/dsmrreporter/dsmr"
 	"github.com/stretchr/testify/assert"
 	"github.com/tarm/serial"
@@ -49,7 +48,7 @@ func TestOpenPort_EmptyDevice(t *testing.T) {
 
 	_, err := dsmr.OpenPort(portReader.OpenPort, device, baud, parity)
 	assert.Error(t, err)
-	assert.ErrorIs(t, dsmrreporter.ErrNoDeviceProvided, err)
+	assert.ErrorIs(t, dsmr.ErrNoDeviceProvided, err)
 	assert.False(t, portReader.OpenWasCalled)
 }
 
