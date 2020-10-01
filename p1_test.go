@@ -2,7 +2,7 @@ package main_test
 
 import (
 	"errors"
-	dsmrreporter "github.com/marcelblijleven/dsmrreporter"
+	. "github.com/marcelblijleven/dsmrreporter"
 	"github.com/stretchr/testify/assert"
 	"github.com/tarm/serial"
 	"testing"
@@ -32,7 +32,7 @@ func TestOpenPort(t *testing.T) {
 		device = "/tty/test"
 	)
 
-	_, err := dsmrreporter.OpenPort(portReader.OpenPort, device, baud, parity)
+	_, err := OpenPort(portReader.OpenPort, device, baud, parity)
 	assert.NoError(t, err)
 	assert.True(t, portReader.OpenWasCalled)
 }
@@ -46,9 +46,9 @@ func TestOpenPort_EmptyDevice(t *testing.T) {
 		device = ""
 	)
 
-	_, err := dsmrreporter.OpenPort(portReader.OpenPort, device, baud, parity)
+	_, err := OpenPort(portReader.OpenPort, device, baud, parity)
 	assert.Error(t, err)
-	assert.ErrorIs(t, dsmrreporter.ErrNoDeviceProvided, err)
+	assert.ErrorIs(t, ErrNoDeviceProvided, err)
 	assert.False(t, portReader.OpenWasCalled)
 }
 
@@ -66,7 +66,7 @@ func TestOpenPort_PortReaderReturnsErr(t *testing.T) {
 		device = "/tty/test"
 	)
 
-	_, err := dsmrreporter.OpenPort(portReader.OpenPort, device, baud, parity)
+	_, err := OpenPort(portReader.OpenPort, device, baud, parity)
 	assert.Error(t, err)
 	assert.ErrorIs(t, expectedErr, err)
 	assert.True(t, portReader.OpenWasCalled)
