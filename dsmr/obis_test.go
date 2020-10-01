@@ -13,5 +13,5 @@ func TestGetObis(t *testing.T) {
 
 	_, err = GetObis("does-not:exist")
 	assert.NotNil(t, err)
-	assert.True(t, errors.Is(err, UnknownObisCodeErr))
+	assert.True(t, errors.Is(err, RunUnknownObis))
 }
