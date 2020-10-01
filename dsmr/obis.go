@@ -13,7 +13,7 @@ func GetObis(code string) (Obis, error) {
 		return obis, nil
 	}
 
-	return Obis{}, UnknownObisCodeErr
+	return Obis{}, RunUnknownObis
 }
 
 var obisMap = map[string]Obis{

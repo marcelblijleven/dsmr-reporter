@@ -39,7 +39,7 @@ func getObisCode(s string) (string, error) {
 	m := regexObis.FindStringSubmatch(s)
 
 	if m == nil {
-		return "", IdentifierNotFoundErr
+		return "", ErrIdentifierNotFound
 	}
 
 	return m[1], nil
