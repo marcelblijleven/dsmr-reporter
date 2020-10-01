@@ -14,6 +14,11 @@ type Telegram struct {
 	DataObjects map[string]DataObject `json:"data_objects"`
 }
 
+func (t Telegram) String() string {
+	powerDelivered := t.DataObjects[ObisActualElectricityPowerDelivered.Code]
+	return powerDelivered.Value
+}
+
 type DataObject struct {
 	Code        string `json:"-"`
 	Description string `json:"description"`
